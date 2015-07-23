@@ -19,7 +19,7 @@ public class Collect {
                             Collector.Characteristics.UNORDERED);
     }
 
-    public static <T, K extends Comparable<? super K>, V>
+    public static <T, K, V>
             Collector<T, TreeMap<K, V>, TreeMap<K, V>>
             toTreeMap(Function<? super T, ? extends K> keyMapper,
                       Function<? super T, ? extends V> valueMapper,
@@ -49,7 +49,7 @@ public class Collect {
                             Collector.Characteristics.UNORDERED);
     }
 
-    public static <T, K extends Comparable<? super K>, V>
+    public static <T, K, V>
             Collector<T, TreeMap<K, V>, TreeMap<K, V>>
             toTreeMap(Function<? super T, ? extends K> keyMapper,
                       Function<? super T, ? extends V> valueMapper,
