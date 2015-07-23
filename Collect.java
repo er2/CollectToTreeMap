@@ -24,7 +24,7 @@ public class Collect {
             Collector<T, TreeMap<K, V>, TreeMap<K, V>>
             toTreeMap(Function<? super T, ? extends K> keyMapper,
                       Function<? super T, ? extends V> valueMapper,
-                      Comparator<K> comparator) {
+                      Comparator<? super K> comparator) {
         return Collector.of(() -> new TreeMap<K, V>(comparator),
                             (TreeMap<K, V> tm, T t) -> tm.put(keyMapper.apply(t), valueMapper.apply(t)),
                             (TreeMap<K, V> tm1, TreeMap<K, V> tm2) -> {
@@ -56,7 +56,7 @@ public class Collect {
             Collector<T, TreeMap<K, V>, TreeMap<K, V>>
             toTreeMap(Function<? super T, ? extends K> keyMapper,
                       Function<? super T, ? extends V> valueMapper,
-                      Comparator<K> comparator,
+                      Comparator<? super K> comparator,
                       BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
         return Collector.of(() -> new TreeMap<K, V>(comparator),
                             (TreeMap<K, V> tm, T t) -> tm.put(keyMapper.apply(t), valueMapper.apply(t)),
