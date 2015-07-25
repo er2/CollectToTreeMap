@@ -15,7 +15,6 @@ public class Collect {
                                 tm1.putAll(tm2);
                                 return tm1;
                             },
-                            Collector.Characteristics.IDENTITY_FINISH,
                             Collector.Characteristics.UNORDERED);
     }
 
@@ -30,7 +29,6 @@ public class Collect {
                                 tm1.putAll(tm2);
                                 return tm1;
                             },
-                            Collector.Characteristics.IDENTITY_FINISH,
                             Collector.Characteristics.UNORDERED);
     }
 
@@ -45,7 +43,6 @@ public class Collect {
                                 tm2.forEach((k, v) -> tm1.merge(k, v, remappingFunction));
                                 return tm1;
                             },
-                            Collector.Characteristics.IDENTITY_FINISH,
                             Collector.Characteristics.UNORDERED);
     }
 
@@ -61,7 +58,6 @@ public class Collect {
                                 tm2.forEach((K key, V value) -> tm1.merge(key, value, remappingFunction));
                                 return tm1;
                             },
-                            Collector.Characteristics.IDENTITY_FINISH,
                             Collector.Characteristics.UNORDERED);
     }
 }
