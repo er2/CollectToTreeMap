@@ -38,7 +38,7 @@ public class Collect {
                       Function<? super T, ? extends V> valueMapper,
                       BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
         return Collector.of(TreeMap<K, V>::new,
-                            (TreeMap<K, V> tm, T t) -> tm.put(keyMapper.apply(t), valueMapper.apply(t)),
+                            (TreeMap<K, V> tm, T t) -> tm.put(keyMapper.apply(t), valueMapper.apply(t), remappingFunction),
                             (TreeMap<K, V> tm1, TreeMap<K, V> tm2) -> {
                                 tm2.forEach((k, v) -> tm1.merge(k, v, remappingFunction));
                                 return tm1;
@@ -53,7 +53,7 @@ public class Collect {
                       Comparator<? super K> comparator,
                       BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
         return Collector.of(() -> new TreeMap<K, V>(comparator),
-                            (TreeMap<K, V> tm, T t) -> tm.put(keyMapper.apply(t), valueMapper.apply(t)),
+                            (TreeMap<K, V> tm, T t) -> tm.put(keyMapper.apply(t), valueMapper.apply(t), remappingFunction),
                             (TreeMap<K, V> tm1, TreeMap<K, V> tm2) -> {
                                 tm2.forEach((K key, V value) -> tm1.merge(key, value, remappingFunction));
                                 return tm1;
